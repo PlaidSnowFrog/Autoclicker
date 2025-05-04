@@ -47,7 +47,7 @@ func main() {
 	}
 
 	intervalSlider := widget.NewSlider(0, 10000)
-	intervalSlider.Step = 1
+	intervalSlider.Step = 10
 
 	intervalSliderLabel := widget.NewLabel(fmt.Sprintf("Time between clicks (milliseconds): %v", intervalSlider.Value))
 	intervalSlider.OnChanged = func(f float64) {
@@ -57,7 +57,8 @@ func main() {
 	input := widget.NewEntry()
 	input.SetPlaceHolder("Select a button/string")
 
-	mouseButton := widget.NewButton("Press Mouse", func() { autoClick(0, amountSlider.Value, intervalSlider.Value) })
+	leftMouseButton := widget.NewButton("Left Click", func() { autoClick(0, amountSlider.Value, intervalSlider.Value) })
+	rightMouseButton := widget.NewButton("Right Click", func() { autoClick(1, amountSlider.Value, intervalSlider.Value) })
 	kbdButton := widget.NewButton("Press Keyboard", func() { autoType(input.Text, amountSlider.Value, intervalSlider.Value) })
 
 	window.SetContent(container.NewVBox(
@@ -71,7 +72,9 @@ func main() {
 
 		input,
 
-		mouseButton,
+		leftMouseButton,
+		rightMouseButton,
+
 		kbdButton,
 	))
 
