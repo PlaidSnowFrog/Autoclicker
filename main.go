@@ -62,7 +62,7 @@ func main() {
 	kbdButton := widget.NewButton("Press Keyboard", func() { autoType(input.Text, amountSlider.Value, intervalSlider.Value) })
 
 	window.SetContent(container.NewVBox(
-		widget.NewLabel("version 0.1.0"),
+		widget.NewLabel("version 1.0.0"),
 
 		amountSliderLabel,
 		amountSlider,
